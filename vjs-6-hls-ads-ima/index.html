@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- Load dependent stylesheets. -->
+    <link href="./node_modules/video.js/dist/video-js.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./node_modules/videojs-contrib-ads/dist/videojs-contrib-ads.css" />
+    <link rel="stylesheet" href="./node_modules/videojs-ima/dist/videojs.ima.css" />
+  </head>
+
+  <body>
+    <video id="vdo-1" class="video-js" playsinline controls>
+      <source src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" type="application/x-mpegURL">
+    </video>
+    <!-- Load dependent scripts -->
+    <script src="./node_modules/video.js/dist/video.min.js"></script>
+    <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="./node_modules/videojs-contrib-ads/dist/videojs-contrib-ads.js"></script>
+    <script src="./node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"></script>
+    <script src="./node_modules/videojs-ima/dist/videojs.ima.js"></script>
+    <script>
+      var player = videojs('vdo-1');
+      var options = {
+        id: 'vdo-1',
+        adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?' +
+        'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
+        'impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
+        'cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator='
+      };
+      // This must be called before player.play() below.
+      player.ima(options);
+
+      // Remove controls from the player on iPad to stop native controls from stealing
+       // our click
+       var contentPlayer =  document.getElementById('vdo-1_html5_api');
+       if ((navigator.userAgent.match(/iPad/i) ||
+             navigator.userAgent.match(/Android/i)) &&
+           contentPlayer.hasAttribute('controls')) {
+        console.log('remove');
+        contentPlayer.removeAttribute('controls');
+       }
+
+      var startEvent = 'click';
+      if (navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i) ||
+          navigator.userAgent.match(/Android/i)) {
+        startEvent = 'touchend';
+      }
+      player.one(startEvent, function() {
+        console.log('init');
+        player.ima.initializeAdDisplayContainer();
+      });
+    </script>
+  </body>
+</html>
