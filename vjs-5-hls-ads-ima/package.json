@@ -1,0 +1,19 @@
+{
+  "name": "vjs-5-hls-ads-ima",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "video.js": "^5.20.4",
+    "videojs-contrib-ads": "^5.1.5",
+    "videojs-contrib-hls": "^5.12.2",
+    "videojs-ima": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
