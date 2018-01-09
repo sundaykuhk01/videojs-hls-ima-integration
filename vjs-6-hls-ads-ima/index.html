@@ -11,6 +11,15 @@
     <video id="vdo-1" class="video-js" playsinline controls>
       <source src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" type="application/x-mpegURL">
     </video>
+    <video id="vdo-2" class="video-js" playsinline controls>
+      <source src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" type="application/x-mpegURL">
+    </video>
+    <video id="vdo-3" class="video-js" playsinline controls>
+      <source src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8" type="application/x-mpegURL">
+    </video>
+    <p>Desktop:</p>
+    <p>Android:</p>
+    <p>iOS:</p>
     <!-- Load dependent scripts -->
     <script src="./node_modules/video.js/dist/video.min.js"></script>
     <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
@@ -18,8 +27,8 @@
     <script src="./node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"></script>
     <script src="./node_modules/videojs-ima/dist/videojs.ima.js"></script>
     <script>
-      var player = videojs('vdo-1');
-      var options = {
+      var player_1 = videojs('vdo-1');
+      var options_1 = {
         id: 'vdo-1',
         adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?' +
         'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
@@ -27,16 +36,15 @@
         'cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator='
       };
       // This must be called before player.play() below.
-      player.ima(options);
+      player_1.ima(options_1);
 
       // Remove controls from the player on iPad to stop native controls from stealing
        // our click
-       var contentPlayer =  document.getElementById('vdo-1_html5_api');
+       var contentPlayer_1 =  document.getElementById('vdo-1_html5_api');
        if ((navigator.userAgent.match(/iPad/i) ||
              navigator.userAgent.match(/Android/i)) &&
-           contentPlayer.hasAttribute('controls')) {
-        console.log('remove');
-        contentPlayer.removeAttribute('controls');
+           contentPlayer_1.hasAttribute('controls')) {
+        contentPlayer_1.removeAttribute('controls');
        }
 
       var startEvent = 'click';
@@ -45,9 +53,70 @@
           navigator.userAgent.match(/Android/i)) {
         startEvent = 'touchend';
       }
-      player.one(startEvent, function() {
-        console.log('init');
-        player.ima.initializeAdDisplayContainer();
+      player_1.one(startEvent, function() {
+        player_1.ima.initializeAdDisplayContainer();
+      });
+    </script>
+    <script>
+      var player_2 = videojs('vdo-2');
+      var options_2 = {
+        id: 'vdo-2',
+        adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?' +
+        'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
+        'impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
+        'cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator='
+      };
+      // This must be called before player.play() below.
+      player_2.ima(options_2);
+
+      // Remove controls from the player on iPad to stop native controls from stealing
+       // our click
+       var contentPlayer_2 =  document.getElementById('vdo-1_html5_api');
+       if ((navigator.userAgent.match(/iPad/i) ||
+             navigator.userAgent.match(/Android/i)) &&
+           contentPlayer_2.hasAttribute('controls')) {
+        contentPlayer_2.removeAttribute('controls');
+       }
+
+      var startEvent = 'click';
+      if (navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i) ||
+          navigator.userAgent.match(/Android/i)) {
+        startEvent = 'touchend';
+      }
+      player_2.one(startEvent, function() {
+        player_2.ima.initializeAdDisplayContainer();
+      });
+    </script>
+    <script>
+      var player_3 = videojs('vdo-3');
+      var options_3 = {
+        id: 'vdo-3',
+        adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?' +
+        'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
+        'impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
+        'cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator='
+      };
+      // This must be called before player.play() below.
+      player_3.ima(options_3);
+
+      // Remove controls from the player on iPad to stop native controls from stealing
+       // our click
+       var contentPlayer_3 =  document.getElementById('vdo-1_html5_api');
+       if ((navigator.userAgent.match(/iPad/i) ||
+             navigator.userAgent.match(/Android/i)) &&
+           contentPlayer_3.hasAttribute('controls')) {
+        contentPlayer_3.removeAttribute('controls');
+       }
+
+      var startEvent = 'click';
+      if (navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i) ||
+          navigator.userAgent.match(/Android/i)) {
+        startEvent = 'touchend';
+      }
+      player_3.one(startEvent, function() {
+        player_3.ima.initializeAdDisplayContainer();
       });
     </script>
   </body>
